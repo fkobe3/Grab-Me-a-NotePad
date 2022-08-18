@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const notes = require('../../db/db');
-const { createNote, removeNote, validateNote } = require('../../lib/notes');
+const { createNote, removeNote, validateNote } = require('../../lib/multinote');
 
 // API response for GET methods on notes endpoint
 router.get('/notes', (req, res) => {
