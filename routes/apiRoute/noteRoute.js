@@ -3,12 +3,12 @@ const notes = require('../../db/db');
 const { createNote, removeNote, validateNote } = require('../../lib/multinote');
 
 // API response for GET methods on notes endpoint
-router.get('/notes', (req, res) => {
+router.get('/multinote', (req, res) => {
     res.json(notes);
 });
 
 // API response for POST methods on notes endpoint
-router.post('/notes', (req, res) => {
+router.post('/multinote', (req, res) => {
     if(validateNote(req.body)) {
         const note = createNote(notes, req.body);
         res.json(note);
@@ -18,7 +18,7 @@ router.post('/notes', (req, res) => {
 });
 
 // API response for DELETE methods on notes endpoint
-router.delete('/notes/:id', (req, res) => {
+router.delete('/multinote/:id', (req, res) => {
     const result = removeNote(notes, req.params.id);
 
     if(result)
