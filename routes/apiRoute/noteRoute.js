@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const notes = require('../lib/multinote');
+const notes = require('../../lib/multinote');
 const { createNote, removeNote, validateNote } = require('../../lib/multinote');
 
 // API response for GET methods on notes endpoint
