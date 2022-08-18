@@ -4,7 +4,7 @@ let saveNoteBtn;
 let newNoteBtn;
 let noteList;
 
-if (window.location.pathname === '/multinote') {
+if (window.location.pathname === '/multinote.html') {
   noteTitle = document.querySelector('.note-title');
   noteBody = document.querySelector('.note-bodyarea');
   saveNoteBtn = document.querySelector('.save-note');
