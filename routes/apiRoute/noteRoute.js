@@ -24,7 +24,7 @@ router.delete('/multinote/:id', (req, res) => {
     if(result)
         res.status(200).send(`The note with id ${req.params.id} has been successfully removed!`);
     else
-        res.status(400).send(`There was an error removing the specified entry with id: ${req.params.id}!`);
+        res.status(400).send(`There was an error removing the note with id: ${req.params.id}! Please try again at a later time.`);
 });
 
 module.exports = router;

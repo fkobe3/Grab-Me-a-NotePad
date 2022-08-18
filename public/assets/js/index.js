@@ -1,12 +1,12 @@
 let noteTitle;
-let noteText;
+let noteBody;
 let saveNoteBtn;
 let newNoteBtn;
 let noteList;
 
 if (window.location.pathname === '/multinote') {
   noteTitle = document.querySelector('.note-title');
-  noteText = document.querySelector('.note-textarea');
+  noteBody = document.querySelector('.note-bodyarea');
   saveNoteBtn = document.querySelector('.save-note');
   newNoteBtn = document.querySelector('.new-note');
   noteList = document.querySelectorAll('.list-container .list-group');
@@ -42,7 +42,7 @@ const saveNote = (note) =>
     body: JSON.stringify(note),
   });
 
-const deleteNote = (id) =>
+const removeNote = (id) =>
   fetch(`/api/multinote/${id}`, {
     method: 'DELETE',
     headers: {
@@ -55,21 +55,21 @@ const renderActiveNote = () => {
 
   if (activeNote.id) {
     noteTitle.setAttribute('readonly', true);
-    noteText.setAttribute('readonly', true);
+    noteBody.setAttribute('readonly', true);
     noteTitle.value = activeNote.title;
-    noteText.value = activeNote.text;
+    noteBody.value = activeNote.body;
   } else {
     noteTitle.removeAttribute('readonly');
-    noteText.removeAttribute('readonly');
+    noteBody.removeAttribute('readonly');
     noteTitle.value = '';
-    noteText.value = '';
+    noteBody.value = '';
   }
 };
 
 const handleNoteSave = () => {
   const newNote = {
     title: noteTitle.value,
-    text: noteText.value,
+    body: noteBody.value,
   };
   saveNote(newNote).then(() => {
     getAndRenderNotes();
@@ -109,7 +109,7 @@ const handleNewNoteView = (e) => {
 };
 
 const handleRenderSaveBtn = () => {
-  if (!noteTitle.value.trim() || !noteText.value.trim()) {
+  if (!noteTitle.value.trim() || !noteBody.value.trim()) {
     hide(saveNoteBtn);
   } else {
     show(saveNoteBtn);
@@ -126,13 +126,13 @@ const renderNoteList = async (notes) => {
   let noteListItems = [];
 
   // Returns HTML element with or without a delete button
-  const createLi = (text, delBtn = true) => {
+  const createLi = (body, delBtn = true) => {
     const liEl = document.createElement('li');
     liEl.classList.add('list-group-item');
 
     const spanEl = document.createElement('span');
     spanEl.classList.add('list-item-title');
-    spanEl.innerText = text;
+    spanEl.innerText = body;
     spanEl.addEventListener('click', handleNoteView);
 
     liEl.append(spanEl);
@@ -177,7 +177,7 @@ if (window.location.pathname === '/multinote') {
   saveNoteBtn.addEventListener('click', handleNoteSave);
   newNoteBtn.addEventListener('click', handleNewNoteView);
   noteTitle.addEventListener('keyup', handleRenderSaveBtn);
-  noteText.addEventListener('keyup', handleRenderSaveBtn);
+  noteBody.addEventListener('keyup', handleRenderSaveBtn);
 }
 
 getAndRenderNotes();
