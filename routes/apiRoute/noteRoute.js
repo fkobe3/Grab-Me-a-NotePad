@@ -1,14 +1,14 @@
 const router = require('express').Router();
 const notes = require('../../db/db');
-const { createNote, removeNote, validateNote } = require('../../lib/multinote');
+const { createNote, removeNote, validateNote } = require('../../lib/multinote.js');
 
 // API response for GET methods on notes endpoint
-router.get('/multinote', (req, res) => {
+router.get('/multinote.js', (req, res) => {
     res.json(notes);
 });
 
 // API response for POST methods on notes endpoint
-router.post('/multinote', (req, res) => {
+router.post('/multinote.js', (req, res) => {
     if(validateNote(req.body)) {
         const note = createNote(notes, req.body);
         res.json(note);
@@ -18,7 +18,7 @@ router.post('/multinote', (req, res) => {
 });
 
 // API response for DELETE methods on notes endpoint
-router.delete('/multinote/:id', (req, res) => {
+router.delete('/multinote.js/:id', (req, res) => {
     const result = removeNote(notes, req.params.id);
 
     if(result)
