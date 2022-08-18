@@ -26,7 +26,7 @@ const hide = (elem) => {
 let activeNote = {};
 
 const getNotes = () =>
-  fetch('/api/multinote.html', {
+  fetch('/api/multinote', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ const getNotes = () =>
   });
 
 const saveNote = (note) =>
-  fetch('/api/multinote.html', {
+  fetch('/api/multinote', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ const saveNote = (note) =>
   });
 
 const removeNote = (id) =>
-  fetch(`/api/multinote.html/${id}`, {
+  fetch(`/api/multinote/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
