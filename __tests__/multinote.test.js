@@ -2,7 +2,7 @@ const fs = require('fs');
 const crypto = require('crypto');
 const notes = require('../db/db.json');
 const Note = require('../lib/Note');
-const {createNote, deleteNote, validateNote} = require('../lib/multinote');
+const {createNote, removeNote, validateNote} = require('../lib/multinote');
 jest.mock ('fs');
 
 test("creates a new note", () => {
@@ -34,9 +34,9 @@ test("removes a note", () => {
     ]
 
     expect(notesList.length).toEqual(3);
-    expect(deleteNote(notesList, 2)).toEqual(true);
+    expect(removeNote(notesList, 2)).toEqual(true);
     expect(notesList.length).toEqual(2);
-    expect(deleteNote(notesList, 2)).toEqual(false);
+    expect(removeNote(notesList, 2)).toEqual(false);
     expect(notesList.length).toEqual(2);
 });
 
