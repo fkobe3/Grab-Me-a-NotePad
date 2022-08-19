@@ -18,9 +18,9 @@ This program allows you to create a README based off of answers to inputs that y
 ## Usage
   Examples of use would be primarly whenever you do not have a piece of paper and a pen or pencil, you can create a note easily with this application, and when you no longer need the reminder, deleting it is as easy as a button press
 ## Screenshots 
-<img src="../screenshots/Screenshot54.png">
-<img src="../screenshots/Screenshot55.png">
-<img src="../screenshots/Screenshot56.png">
+<img src="./screenshots/Screenshot54.png">
+<img src="./screenshots/Screenshot55.png">
+<img src="./screenshots/Screenshot56.png">
 
 ## Contributing
   Base source code was retrieved from Xander Rapstine (Xandromus) and John McCambridge (nol166) on GitHub.
